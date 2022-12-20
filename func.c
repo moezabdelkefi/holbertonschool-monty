@@ -1,38 +1,17 @@
 #include "monty.h"
+
 /**
- * push - adds an element to the top of the stack
- * @stack: double pointer to the top of the stack
- * @line_number: line number of the command in the file
- * @file: file to read the opcode from
+ * push - push an element to the stack
+ * @stack: pointer to the top of the stack
+ * @line_number: line number in the file
  */
-void push(stack_t **stack, unsigned int line_number, FILE *file)
+void push(stack_t **stack, unsigned int line_number)
 {
-    int n;
     stack_t *new;
-    char *opcode;
+    int n;
 
     if (!stack)
-    {
-        fprintf(stderr, "L%u: can't push, stack is NULL\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-
-    // read next opcode
-    opcode = malloc(sizeof(char) * 1024);
-    if (!opcode)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
-    if (fscanf(file, "%s", opcode) == EOF)
         return;
-
-    n = atoi(opcode);
-    if (n == 0 && strcmp(opcode, "0") != 0)
-    {
-        fprintf(stderr, "L%u: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
-    }
 
     new = malloc(sizeof(stack_t));
     if (!new)
@@ -40,28 +19,29 @@ void push(stack_t **stack, unsigned int line_number, FILE *file)
         fprintf(stderr, "Error: malloc failed\n");
         exit(EXIT_FAILURE);
     }
+
+    if (sscanf(strtok(NULL, " \n"), "%d", &n) != 1)
+    {
+        fprintf(stderr, "L%u: usage: push integer\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+
     new->n = n;
     new->prev = NULL;
     new->next = *stack;
     if (*stack)
         (*stack)->prev = new;
     *stack = new;
-
-    free(opcode);
 }
 
 /**
- * pall - prints all the values on the stack, starting from the top
- * @stack: double pointer to the top of the stack
- * @line_number: line number of the command in the file (unused)
- * @file: file to read the opcode from (unused)
+ * pall - print all the values on the stack, starting from the top of the stack
+ * @stack: pointer to the top of the stack
+ * @line_number: line number in the file (unused)
  */
-void pall(stack_t **stack, unsigned int line_number, FILE *file)
+void pall(stack_t **stack, unsigned int line_number)
 {
     stack_t *current;
-
-    (void)line_number;
-    (void)file;
 
     if (!stack || !*stack)
         return;
@@ -71,5 +51,23 @@ void pall(stack_t **stack, unsigned int line_number, FILE *file)
     {
         printf("%d\n", current->n);
         current = current->next;
+    }
+    (void)line_number;
+}
+
+/**
+ * free_stack - free the memory used by the stack
+ * @stack: pointer to the top of the stack
+ */
+void free_stack(stack_t *stack)
+{
+    stack_t *current, *next;
+
+    current = stack;
+    while (current)
+    {
+        next = current->next;
+        free(current);
+        current = next;
     }
 }
