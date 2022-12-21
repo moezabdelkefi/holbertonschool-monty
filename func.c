@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * push - push an element to the stack
  * @stack: pointer to the top of the stack
@@ -7,31 +6,31 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-    stack_t *new;
-    int n;
+	stack_t *new;
+	int n;
 
-    if (!stack)
-        return;
+	if (!stack)
+		return;
 
-    new = malloc(sizeof(stack_t));
-    if (!new)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
+	new = malloc(sizeof(stack_t));
+	if (!new)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
-    if (sscanf(strtok(NULL, " \n"), "%d", &n) != 1)
-    {
-        fprintf(stderr, "L%u: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	if (sscanf(strtok(NULL, " \n"), "%d", &n) != 1)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
-    new->n = n;
-    new->prev = NULL;
-    new->next = *stack;
-    if (*stack)
-        (*stack)->prev = new;
-    *stack = new;
+	new->n = n;
+	new->prev = NULL;
+	new->next = *stack;
+	if (*stack)
+		(*stack)->prev = new;
+	*stack = new;
 }
 
 /**
@@ -41,18 +40,18 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-    stack_t *current;
+	stack_t *current;
 
-    if (!stack || !*stack)
-        return;
+	if (!stack || !*stack)
+		return;
 
-    current = *stack;
-    while (current)
-    {
-        printf("%d\n", current->n);
-        current = current->next;
-    }
-    (void)line_number;
+	current = *stack;
+	while (current)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
+	}
+	(void)line_number;
 }
 
 /**
@@ -61,13 +60,13 @@ void pall(stack_t **stack, unsigned int line_number)
  */
 void free_stack(stack_t *stack)
 {
-    stack_t *current, *next;
+	stack_t *current, *next;
 
-    current = stack;
-    while (current)
-    {
-        next = current->next;
-        free(current);
-        current = next;
-    }
+	current = stack;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }
