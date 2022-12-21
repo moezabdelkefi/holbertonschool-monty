@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 		opcode = strtok(line, " \n");
 		if (opcode == NULL || opcode[0] == '#')
 			continue;
-		printf("opcode: %s\n", opcode);
+
 		for (i = 0; instructions[i].opcode; i++)
 		{
 			if (strcmp(instructions[i].opcode, opcode) == 0)
