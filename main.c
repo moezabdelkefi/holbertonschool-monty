@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- *main -
+ *main - make tee not love
  *@argc: argument
  *@argv:argument
  */

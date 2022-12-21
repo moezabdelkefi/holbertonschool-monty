@@ -6,34 +6,32 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
+	stack_t *new;
+	int n;
 
-	stack_t *new_element = malloc(sizeof(stack_t));
-	if (!new_element)
+	if (!stack)
+		return;
+
+	new = malloc(sizeof(stack_t));
+	if (!new)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
 	char *arg = strtok(NULL, " \n");
-	if (!arg)
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	int value;
-	if (sscanf(arg, "%d", &value) != 1)
+	if (!arg || sscanf(arg, "%d", &n) != 1)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	new_element->n = value;
-	new_element->prev = NULL;
-	new_element->next = *stack;
-
+	new->n = n;
+	new->prev = NULL;
+	new->next = *stack;
 	if (*stack)
-		(*stack)->prev = new_element;
-	*stack = new_element;
+		(*stack)->prev = new;
+	*stack = new;
 }
 
 /**
