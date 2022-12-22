@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
  *main - make tee not love
- *@argc: argument
- *@argv:argument
+ *@argc: is an integer representing the number of arguments
+ *@argv: is an array of sring representing the arguments
  *Return: (EXIT_SUCCESS)
  */
 int main(int argc, char **argv)
@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
 		{NULL, NULL}};
 	char *opcode;
 	int i;
