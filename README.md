@@ -49,11 +49,10 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
 
 ### Monty byte code files:
 
-                  ![Capture d’écran 2022-12-22 041036 mo](https://user-images.githubusercontent.com/113900578/209146633-52fb7ccf-8616-49fd-ac28-30ac4fe616be.png)
+   ![Capture d’écran 2022-12-22 041036 mo](https://user-images.githubusercontent.com/113900578/209146633-52fb7ccf-8616-49fd-ac28-30ac4fe616be.png)
 
                     
-Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account:  
-
-                  ![Capture d’écran 2022-12-22 041135](https://user-images.githubusercontent.com/113900578/209146781-1894b233-9334-4f4b-8aa1-35d657a9dc45.png)
+Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account:
+    ![Capture d’écran 2022-12-22 041135](https://user-images.githubusercontent.com/113900578/209146781-1894b233-9334-4f4b-8aa1-35d657a9dc45.png)
 
 
