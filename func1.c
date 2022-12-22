@@ -44,22 +44,6 @@ void swap(stack_t **stack, unsigned int line_number)
 	*stack = second;
 }
 /**
- * free_stack - free the memory used by the stack
- * @stack: pointer to the top of the stack
- */
-void free_stack(stack_t *stack)
-{
-	stack_t *current, *next;
-
-	current = stack;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-}
-/**
  * add - add the top two elements of the stack
  * @stack: pointer to the top of the stack
  * @line_number: line number in the file
@@ -78,4 +62,21 @@ void add(stack_t **stack, unsigned int line_number)
 	second->prev = NULL;
 	*stack = second;
 	free(top);
+}
+
+/**
+ * free_stack - free the memory used by the stack
+ * @stack: pointer to the top of the stack
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *current, *next;
+
+	current = stack;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }
