@@ -1,4 +1,4 @@
-<h1 align="center">holbertonschool-monty</h1>
+<h1 align="center">Stacks, Queues - LIFO, FIFO</h1>
 
 ## description:
 
