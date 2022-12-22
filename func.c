@@ -70,12 +70,3 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	printf("%d\n", (*stack)->n);
 }
-void nop(void)
-{
-	int opcode = nop;
-	if (opcode == nop)
-	{
-		nop();
-	}
-	return (0);
-}
