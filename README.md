@@ -22,18 +22,23 @@ A queue is a linear data structure that follows the First In First Out (FIFO) pr
                             int n;
                             struct stack_s *prev;
                             struct stack_s *next;
-                            } stack_t;
+                        } stack_t;
                             
-                             /**
-                             * struct instruction_s - opcode and its function
-                             * @opcode: the opcode
-                             * @f: function to handle the opcode
-                             * Description: opcode and its function
-                             * for stack, queues, LIFO, FIFO
-                             */
-                             typedef struct instruction_s
-                             {
-                             char *opcode;
-                             void (*f)(stack_t **stack, unsigned int line_number);
-                             } instruction_t;
+                        /**
+                        * struct instruction_s - opcode and its function
+                        * @opcode: the opcode
+                        * @f: function to handle the opcode
+                        * Description: opcode and its function
+                        * for stack, queues, LIFO, FIFO
+                        */
+                        typedef struct instruction_s
+                        {
+                            char *opcode;
+                            void (*f)(stack_t **stack, unsigned int line_number);
+                        } instruction_t;
                              
+### Compilation & Output:
+
+                                  $ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+                                  
+                                  
